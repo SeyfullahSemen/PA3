@@ -1,10 +1,9 @@
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -15,6 +14,15 @@ public class Controller {
 
     @FXML
     private TextField sentenceToText;
+
+    @FXML
+    private Label encryptedMessageLabel;
+
+    @FXML
+    private Label foundPrimeNumberLabel;
+
+    @FXML
+    private Label calculatedQLabel;
 
     // Dit is de zin die wij moeten encrypten
     private final String SENTENCE = "Good things come to people who wait, but better things come to those who go out and get them ~Anonymous";
@@ -32,7 +40,7 @@ public class Controller {
         return messageConversion.modPow(e, modulus);
     }
 
-    private static void init(String N) {
+    private void init(String N) {
         //Initialise n and p
         BigInteger n = new BigInteger(N);
 
@@ -43,6 +51,7 @@ public class Controller {
             if (n.mod(p).equals(BigInteger.ZERO)) {
                 //Calculate q
                 q = n.divide(p);
+                calculatedQLabel.setText(calculatedQLabel.getText() + " " + q);
                 modulus = p.multiply(q);
                 phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
                 return;
@@ -50,6 +59,7 @@ public class Controller {
             }
             //p = the next prime number
             p = p.nextProbablePrime();
+            foundPrimeNumberLabel.setText(foundPrimeNumberLabel.getText() + " " + p);
         }
         System.out.println("There is no solution for this number.");
     }
@@ -75,19 +85,16 @@ public class Controller {
             }
         }
         System.out.println(encryptedMessage);
+        encryptedMessageLabel.setText(encryptedMessageLabel.getText() + " " + encryptedMessage);
     }
 
     /**
      * Call the encrypt message after mouse click on the
      * button to encrypt.
      */
-    public void onEncryptButtonClick(){
-        encryptNowButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                encryptMessage();
-            }
-        });
+    @FXML
+    public void onEncryptButtonClick() {
+        encryptNowButton.setOnMouseClicked(event -> encryptMessage());
     }
 
 }
