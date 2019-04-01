@@ -25,8 +25,8 @@ public class Main extends Application {
          * TODO: De gegeven public key: 13493,7------> N= 13493 E=7
          */
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.setTitle("RSA encryptor/decryptor");
+        primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.show();
     }
 

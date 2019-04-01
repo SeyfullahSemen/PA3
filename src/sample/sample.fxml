@@ -11,26 +11,37 @@
         <RowConstraints/>
     </rowConstraints>
     <children>
-        <TabPane prefHeight="700.0" prefWidth="1000" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="1000" prefWidth="800" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab id="encryptButtonTab" text="Encrypt">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextField id="sentenceToText" fx:id="sentenceToText" layoutX="257.0" layoutY="99.0"
-                                           promptText="enter sentence...."/>
-                                <Button id="encryptNowButton" fx:id="encryptNowButton" layoutX="450.0" layoutY="100.0"
-                                        mnemonicParsing="false" onMousePressed="#onEncryptButtonClick" text="Encrypt"/>
+                                <TextField id= "nField" fx:id="nField" layoutX="100" layoutY="99.0"
+                                           promptText="n = ..."/>
+                                <Button id="step1Button" fx:id="step1Button" layoutX="300" layoutY="100.0"
+                                        mnemonicParsing="false" onMousePressed="#onStep1ButtonClick" text="Step 1"/>
+                                <Button id="step2Button" fx:id="step2Button" layoutX="500" layoutY="100.0"
+                                        mnemonicParsing="false" onMousePressed="#onStep2ButtonClick" text="Step 2"/>
                                 <AnchorPane layoutX="10.0" layoutY="231.0" prefHeight="228.0" prefWidth="685.0">
                                     <children>
-                                        <Label fx:id="encryptedMessageLabel" alignment="CENTER" layoutX="14.0"
-                                               layoutY="14.0" text="message: " textAlignment="CENTER"/>
                                         <Label fx:id="foundPrimeNumberLabel" alignment="CENTER" layoutX="14.0"
-                                               layoutY="68.0" text="Found prime number: "/>
+                                               layoutY="68.0" text="p is "/>
                                         <Label fx:id="calculatedQLabel" layoutX="14.0" layoutY="104.0"
-                                               text="Found Q: "/>
+                                               text="q is "/>
+                                        <Label fx:id="calculationTime" layoutX="14.0" layoutY="140.0"
+                                               text="Amount of time busy finding p and q: "/>
+                                        <Label fx:id="calculatedELabel" layoutX="14.0" layoutY="176.0"
+                                               text="e is "/>
                                     </children>
                                 </AnchorPane>
+                                <TextField id= "sentenceField" fx:id="sentenceField" layoutX="100" layoutY="450"
+                                           prefWidth="600" promptText="enter sentence to encode"/>
+                                <Button id="step3Button" fx:id="step3Button" layoutX="715" layoutY="450"
+                                        mnemonicParsing="false" onMousePressed="#onStep3ButtonClick" text="Step 3" />
+                                <Label fx:id="encryptedMessageLabel" alignment="CENTER" layoutX="14.0"
+                                       layoutY="486" text="Message after encryption is: " textAlignment="CENTER"/>
+
                             </children>
                         </AnchorPane>
                     </content>
